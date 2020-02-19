@@ -13,8 +13,8 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 public class ResourceServerConfig extends WebSecurityConfigurerAdapter {
 
 
-    @Autowired
-    private AuthenticationManager authenticationManager;
+   // @Autowired
+   // private AuthenticationManager authenticationManager;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -34,7 +34,7 @@ public class ResourceServerConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
-        auth.parentAuthenticationManager(authenticationManager)
+        auth//.parentAuthenticationManager(authenticationManager)
                 .inMemoryAuthentication()
                 .withUser("Peter")
                 .password("peter")
