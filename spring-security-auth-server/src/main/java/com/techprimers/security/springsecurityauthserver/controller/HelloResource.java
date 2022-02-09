@@ -1,4 +1,4 @@
-package com.techprimers.security.springsecurityauthserver;
+package com.techprimers.security.springsecurityauthserver.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.security.Principal;
 
 @RestController
-@RequestMapping("/rest/hello")
+@RequestMapping("/hello")
 public class HelloResource {
 
 
@@ -15,6 +15,7 @@ public class HelloResource {
     public Principal user(Principal principal) {
         return principal;
     }
+
     @GetMapping
     public String hello() {
         return "Hello World";
