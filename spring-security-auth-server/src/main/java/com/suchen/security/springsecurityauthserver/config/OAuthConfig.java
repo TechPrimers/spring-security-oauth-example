@@ -1,4 +1,4 @@
-package com.techprimers.security.springsecurityauthserver.config;
+package com.suchen.security.springsecurityauthserver.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
