@@ -9,7 +9,17 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
+
 stages:
+- stage: Initialization
+  displayName: Initialization
+  jobs:
+    - job: Initialization
+      displayName: Initialization
+      steps:
+        - task: SonarQubePrepare@5
+          inputs:
+            scannerMode: 'Other'
 - stage: Build
   displayName: Build
   jobs:
@@ -35,7 +45,7 @@ stages:
             containerRegistry: 'Docker Hub'
             repository: 'suchen2008/spring-security-auth-server'
             command: 'buildAndPush'
-            Dockerfile: '**/Dockerfile'            
+            Dockerfile: '**/Dockerfile'
 - stage: Deploy
   displayName: Deploy
   jobs:
