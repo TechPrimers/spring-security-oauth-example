@@ -19,7 +19,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
         //spring secuity提供了requestMatchers接口，等价于http.authorizeRequests().anyRequest().access("permitAll");
         //提供资源，访问/user需要权限认证
         //拦截/user开头的所有请求
-        http.requestMatchers().antMatchers("/user/**")
+        http.requestMatchers().antMatchers("/users", "/users/**", "/user/**")
                 .and()
                 .authorizeRequests()
                 .anyRequest()
