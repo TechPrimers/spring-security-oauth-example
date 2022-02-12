@@ -18,6 +18,7 @@ stages:
       displayName: Initialization
       steps:
         - task: SonarQubePrepare@5
+          continueOnError: true
           inputs:
             scannerMode: 'Other'
 - stage: Build
@@ -39,6 +40,7 @@ stages:
             goals: 'package'
         - task: SonarQubeAnalyze@5
           displayName: SonarQube
+          continueOnError: true
         - task: Docker@2
           displayName: Docker build
           inputs:
