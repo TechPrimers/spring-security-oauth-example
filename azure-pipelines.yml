@@ -27,6 +27,8 @@ stages:
             publishJUnitResults: true
             testResultsFiles: '**/surefire-reports/TEST-*.xml'
             goals: 'package'
+        - task: SonarQubeAnalyze@5
+          displayName: SonarQube
         - task: Docker@2
           displayName: Docker build
           inputs:
