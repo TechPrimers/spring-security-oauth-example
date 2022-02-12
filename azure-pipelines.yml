@@ -36,3 +36,11 @@ stages:
             Dockerfile: '**/Dockerfile'            
 - stage: Deploy
   displayName: Deploy
+  jobs:
+    - job: Deploy
+      displayName: Deploy
+      steps:
+      - task: CmdLine@2
+        inputs:
+          script: |
+               echo "Deploy......"
