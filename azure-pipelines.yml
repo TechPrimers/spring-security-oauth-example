@@ -40,7 +40,6 @@ stages:
     - job: Deploy
       displayName: Deploy
       steps:
-      - task: CmdLine@2
-        inputs:
-          script: |
-               echo "Deploy......"
+        - task: CmdLine@2
+          inputs:
+            script: 'echo Hello world'
