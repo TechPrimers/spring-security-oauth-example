@@ -8,7 +8,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.R
 
 /**
  * oAuth resource server
- * 只作用于/user/ 开头
+ * 只作用于/users,/user/** 开头
  */
 @Configuration
 @EnableResourceServer
@@ -19,7 +19,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
         //spring secuity提供了requestMatchers接口，等价于http.authorizeRequests().anyRequest().access("permitAll");
         //提供资源，访问/user需要权限认证
         //拦截/user开头的所有请求
-        http.requestMatchers().antMatchers("/users", "/users/**", "/user/**")
+        http.requestMatchers().antMatchers("/users", "/user/**")
                 .and()
                 .authorizeRequests()
                 .anyRequest()
