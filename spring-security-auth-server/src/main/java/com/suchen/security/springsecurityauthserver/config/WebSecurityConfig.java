@@ -5,8 +5,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.authentication.configuration.EnableGlobalAuthentication;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -24,12 +22,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    /**
+     * 父类中先创建HttpSecurity，然后再配置它
+     *
+     * @param http
+     * @throws Exception
+     */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
-                .authorizeRequests()
-                    .anyRequest().authenticated()
+                    .authorizeRequests()
+                        .antMatchers("/actuator/**").permitAll()
+                        .anyRequest().authenticated()
 //                .and()
 //                    .formLogin().permitAll()
                 .and()
@@ -40,8 +45,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     /**
      * 注册AuthenticationManager bean,通过父类中的方法来创建AuthenticationManager实例
-     * authenticationBuilder是最终的builder
-     * localConfigureAuthenticationBldr 是提供给开发人员扩展的
      *
      * @return
      * @throws Exception
@@ -53,6 +56,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     /**
      * 设置AuthenticationManagerBuilder，添加一个内存验证的provider
+     * 此处是localConfigureAuthenticationBldr 是提供给开发人员扩展的
+     * authenticationBuilder是最终的builder
      *
      * @param auth
      * @throws Exception
