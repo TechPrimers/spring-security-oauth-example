@@ -1,4 +1,4 @@
-package com.suchen.security.springsecurityauthserver.config;
+package com.suchen.security.springsecurityauthserver.config.server;
 
 
 import org.springframework.beans.factory.annotation.Autowired;

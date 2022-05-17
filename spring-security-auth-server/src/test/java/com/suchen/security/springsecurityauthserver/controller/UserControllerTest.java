@@ -1,8 +1,8 @@
 package com.suchen.security.springsecurityauthserver.controller;
 
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ public class UserControllerTest {
     public void testHello() {
         UserController userController = new UserController();
         List<UserController.User> users = userController.users();
-        Assert.assertEquals(2, users.size());
+        Assertions.assertEquals(2, users.size());
     }
 
 }
